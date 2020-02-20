@@ -9,8 +9,8 @@ def on_move(x, y):
 
 def on_click(x, y, button, pressed):
     if pressed == True:
-        global mou
-        print(mou.position)#((x, y))#'{0} at {1}'.format(
+        global mouse
+        print(mouse.position)#((x, y))#'{0} at {1}'.format(
         #'Pressed' if pressed else 'Released',
         #(x, y)))
     if not pressed:
@@ -57,9 +57,16 @@ if bool(m_lis) is True:
         pass
 
 pos_s = {
-    "up":(548, 304),
+    "up":(550, 303),
     "down":(550, 666),
+    "0row":(280, 655),
     }
+
+for i in range(4):
+    pos_s[f"{i+1}row"] = (pos_s["0row"][0], pos_s["0row"][1]+83*i)
+#pos_s += {"2row":(280, 655+83)}
+
+print(pos_s)
 
 def move(name):
     global mouse, pos_s
@@ -71,9 +78,9 @@ def clc(num=1):
 
 def act():
     #global mouse, pos_s
-    move("up")
-    clc()
-    sl(1)
+    #move("up")
+    #clc()
+    #sl(1)
     move("down")
     clc()
 
