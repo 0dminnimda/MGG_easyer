@@ -71,8 +71,9 @@ if bool(m_lis) is True:
     while m_lis:
         pass
 
-rows = [f"{i}_row" for i in range(5)]
 figs = [f"{i}_fig" for i in range(3)]
+divs = [f"{i}_div" for i in range(7)]
+rows = [f"{i}_row" for i in range(5)]
 pos_s = {
     "intr":(515, 845),
     "close":(1170, 200),
@@ -81,8 +82,9 @@ pos_s = {
     "m_fig":(715, 750),
 
     }
-for i in range(len(rows)): pos_s[rows[i]] = (280, 330+83*i)
 for i in range(len(figs)): pos_s[figs[i]] = (360+255*i, 725)
+for i in range(len(divs)): pos_s[divs[i]] = (265+110.5*i, 730)
+for i in range(len(rows)): pos_s[rows[i]] = (280, 330+83*i)
 
 print(pos_s)
 
@@ -90,9 +92,9 @@ def act():
     movc("intr")
     sl(0.2)
     movc("m_fig")
-    sl(0.4)
+    sl(0.6)
     movc(figs[1])
-    for i in figs:
+    for i in divs:
         movc(i, 0)
         sl(1)
 
