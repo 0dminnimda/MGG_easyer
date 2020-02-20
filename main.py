@@ -62,8 +62,9 @@ pos_s = {
 
     }
 
-for i in range(5):
-    pos_s[f"{i}_row"] = (280+83*i, 655)
+rows = [f"{i}_row" for i in range(5)]
+for i in range(len(rows)):
+    pos_s[rows[i]] = (612-83*i, 655)
 
 print(pos_s)
 
@@ -77,11 +78,9 @@ def clc(num=1):
 
 def act():
     #global mouse, pos_s
-    #move("up")
-    #clc()
-    #sl(1)
     move("down")
     clc()
+    #for i in range()
 
 sl(5)
 act()
