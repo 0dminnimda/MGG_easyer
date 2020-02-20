@@ -63,7 +63,8 @@ pos_s = {
     }
 
 for i in range(4):
-    pos_s[f"{i+1}row"] = (pos_s["0row"][0], pos_s["0row"][1]+83*i)
+    i+=1
+    pos_s[f"{i}row"] = (pos_s["0row"][0], pos_s["0row"][1]+83*i)
 #pos_s += {"2row":(280, 655+83)}
 
 print(pos_s)
