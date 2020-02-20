@@ -59,9 +59,33 @@ def movc(name, num=1):
     mouse.position = pos_s[name]
     mouse.click(Button.left, num)
 
+def find_place(num):
+    for i in range(8-num):
+        mocv("left")
+
+def act():
+    movc("intr")
+    #movc("close")
+    #sl(0.1)
+    movc("main_fig")
+    sl(0.2)
+    movc(figs[1])
+    movc(divs[3])
+    find_place(9)
+    movc("enter")
+    sl(0.15)
+    movc(lvls[8])
+    sl(3)
+    for i in []:#lvls:
+        movc(i, 0)
+        sl(1)
+
+    movc("close")
+
 m_lis = 0
 mouse = Controller()
 if bool(m_lis) is True:
+    print("pos mode")
     listener = mou.Listener(
         on_move=on_move,
         on_click=on_click,
@@ -80,8 +104,11 @@ pos_s = {
     "close":(1170, 200),
     "up":(550, 303),
     "down":(550, 666),
-    "m_fig":(715, 750),
-
+    "main_fig":(715, 750),
+    "enter":(600, 545),
+    "back":(340, 760),
+    "left":(350, 470),
+    "righ":(850, 470),
     }
 for i in range(len(figs)): pos_s[figs[i]] = (360+255*i, 725)
 for i in range(len(divs)): pos_s[divs[i]] = (265+110.5*i, 730)
@@ -90,23 +117,6 @@ for i in range(3):
     for j in range(3):
         pos_s[lvls[i+j*3]] = (400+200*i, 355+100*j)
 print(pos_s)
-
-def act():
-    movc("close")
-    sl(0.1)
-    movc("intr")
-    sl(0.1)
-    movc("m_fig")
-    sl(0.5)
-    movc(figs[1])
-    sl(0.1)
-    movc(divs[3])
-    sl(0.1)
-    for i in lvls:
-        movc(i, 0)
-        sl(1)
-
-    movc("close")
 
 sl(1)
 act()
