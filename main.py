@@ -59,13 +59,11 @@ if bool(m_lis) is True:
 pos_s = {
     "up":(550, 303),
     "down":(550, 666),
-    "0row":(280, 655),
+
     }
 
-for i in range(4):
-    i+=1
-    pos_s[f"{i}row"] = (pos_s["0row"][0], pos_s["0row"][1]+83*i)
-#pos_s += {"2row":(280, 655+83)}
+for i in range(5):
+    pos_s[f"{i}_row"] = (280+83*i, 655)
 
 print(pos_s)
 
