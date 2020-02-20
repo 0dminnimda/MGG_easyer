@@ -59,7 +59,7 @@ def movc(name, num=1):
     mouse.position = pos_s[name]
     mouse.click(Button.left, num)
 
-m_lis = 1
+m_lis = 0
 mouse = Controller()
 if bool(m_lis) is True:
     listener = mou.Listener(
@@ -72,6 +72,7 @@ if bool(m_lis) is True:
         pass
 
 rows = [f"{i}_row" for i in range(5)]
+figs = [f"{i}_fig" for i in range(3)]
 pos_s = {
     "intr":(515, 845),
     "up":(550, 303),
@@ -79,18 +80,19 @@ pos_s = {
     "figh":(716, 751),
 
     }
-for i in range(len(rows)):
-    pos_s[rows[i]] = (280, 330+83*i)
+for i in range(len(rows)): pos_s[rows[i]] = (280, 330+83*i)
+for i in range(len(figs)): pos_s[figs[i]] = (360+255*i, 725)
 
 print(pos_s)
 
 def act():
     movc("intr")
-    movc("down")
-    sl(1)
-    for r in rows:
-        movc(r)
-        #sl(1)
+    sl(0.4)
+    #movc("down")
+    #sl(1)
+    for i in figs:
+        movc(i, 0)
+        sl(1)
 
 sl(1)
 act()
