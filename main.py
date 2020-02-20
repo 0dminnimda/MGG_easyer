@@ -75,9 +75,10 @@ rows = [f"{i}_row" for i in range(5)]
 figs = [f"{i}_fig" for i in range(3)]
 pos_s = {
     "intr":(515, 845),
+    "close":(1170, 200),
     "up":(550, 303),
     "down":(550, 666),
-    "figh":(716, 751),
+    "m_fig":(715, 750),
 
     }
 for i in range(len(rows)): pos_s[rows[i]] = (280, 330+83*i)
@@ -87,12 +88,15 @@ print(pos_s)
 
 def act():
     movc("intr")
+    sl(0.2)
+    movc("m_fig")
     sl(0.4)
-    #movc("down")
-    #sl(1)
+    movc(figs[1])
     for i in figs:
         movc(i, 0)
         sl(1)
+
+    movc("close")
 
 sl(1)
 act()
