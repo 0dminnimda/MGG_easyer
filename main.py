@@ -72,10 +72,10 @@ def clc(num=1):
 def act():
     #global mouse, pos_s
     move("up")
-    clc
+    clc()
     sl(1)
-    mouse.position = pos_s["down"]
-    mouse.click(Button.left, None)
+    move("down")
+    clc()
 
 sl(5)
 act()
