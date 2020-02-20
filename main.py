@@ -42,30 +42,6 @@ def on_release(key):
 #    on_release=on_release)
 #listenerk.start()
 
-m_lis = 0
-mouse = Controller()
-if bool(m_lis) is True:
-    listener = mou.Listener(
-        on_move=on_move,
-        on_click=on_click,
-        on_scroll=on_scroll)
-    listener.start()
-
-    while m_lis:
-        pass
-
-pos_s = {
-    "intr":(515, 845),
-    "up":(550, 303),
-    "down":(550, 666),
-
-    }
-
-rows = [f"{i}_row" for i in range(5)]
-for i in range(len(rows)):
-    pos_s[rows[i]] = (280, 330+83*i)
-print(pos_s)
-
 def mp():
     global mouse
     return mouse.position
@@ -83,13 +59,38 @@ def movc(name, num=1):
     mouse.position = pos_s[name]
     mouse.click(Button.left, num)
 
+m_lis = 1
+mouse = Controller()
+if bool(m_lis) is True:
+    listener = mou.Listener(
+        on_move=on_move,
+        on_click=on_click,
+        on_scroll=on_scroll)
+    listener.start()
+
+    while m_lis:
+        pass
+
+rows = [f"{i}_row" for i in range(5)]
+pos_s = {
+    "intr":(515, 845),
+    "up":(550, 303),
+    "down":(550, 666),
+    "figh":(716, 751),
+
+    }
+for i in range(len(rows)):
+    pos_s[rows[i]] = (280, 330+83*i)
+
+print(pos_s)
+
 def act():
     movc("intr")
-    print(mp)
     movc("down")
     sl(1)
     for r in rows:
         movc(r)
-        sl(1)
+        #sl(1)
 
+sl(1)
 act()
