@@ -74,6 +74,7 @@ if bool(m_lis) is True:
 figs = [f"{i}_fig" for i in range(3)]
 divs = [f"{i}_div" for i in range(7)]
 rows = [f"{i}_row" for i in range(5)]
+lvls = [f"{i}_lvl" for i in range(9)]
 pos_s = {
     "intr":(515, 845),
     "close":(1170, 200),
@@ -85,16 +86,23 @@ pos_s = {
 for i in range(len(figs)): pos_s[figs[i]] = (360+255*i, 725)
 for i in range(len(divs)): pos_s[divs[i]] = (265+110.5*i, 730)
 for i in range(len(rows)): pos_s[rows[i]] = (280, 330+83*i)
-
+for i in range(3):
+    for j in range(3):
+        pos_s[lvls[i+j*3]] = (400+200*i, 355+100*j)
 print(pos_s)
 
 def act():
+    movc("close")
+    sl(0.1)
     movc("intr")
-    sl(0.2)
+    sl(0.1)
     movc("m_fig")
-    sl(0.6)
+    sl(0.5)
     movc(figs[1])
-    for i in divs:
+    sl(0.1)
+    movc(divs[3])
+    sl(0.1)
+    for i in lvls:
         movc(i, 0)
         sl(1)
 
