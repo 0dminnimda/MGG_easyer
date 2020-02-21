@@ -87,26 +87,20 @@ def act():
 def first_act():
     movc("intr")
     sl(0.2)
-    #movc("close")
-    #sl(0.1)
     movc("main_fig")
     sl(1)
     movc(figs[1])
     sl(1)
     movc(divs[3])
-    find_place(3)
+    find_place(8)
     sl(0.4)
     movc("enter")
     sl(1)
     movc(lvls[8])
     sl(3)
-    for i in []:#lvls:
-        movc(i, 0)
-        sl(1)
+    movc("close")
 
-    #movc("close")
-
-m_lis = 0
+m_lis = 1
 mouse = Controller()
 if bool(m_lis) is True:
     print("pos mode")
@@ -123,6 +117,7 @@ figs = [f"{i}_fig" for i in range(3)]
 divs = [f"{i}_div" for i in range(7)]
 rows = [f"{i}_row" for i in range(5)]
 lvls = [f"{i}_lvl" for i in range(9)]
+enms = [f"{i}_enm" for i in range(3)]
 pos_s = {
     "intr":(515, 845),
     "close":(1170, 200),
@@ -140,8 +135,9 @@ for i in range(len(rows)): pos_s[rows[i]] = (280, 330+83*i)
 for i in range(3):
     for j in range(3):
         pos_s[lvls[i+j*3]] = (400+200*i, 355+100*j)
+
 print(pos_s)
 
 sl(1)
-first_act()
-#act()
+#first_act()
+act()
