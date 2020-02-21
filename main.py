@@ -61,19 +61,21 @@ def movc(name, num=1):
 
 def find_place(num):
     for i in range(8-num):
-        mocv("left")
+        movc("left")
 
 def act():
     movc("intr")
+    sl(0.1)
     #movc("close")
     #sl(0.1)
     movc("main_fig")
-    sl(0.2)
+    sl(0.3)
     movc(figs[1])
     movc(divs[3])
-    find_place(9)
+    find_place(3)
+    sl(0.4)
     movc("enter")
-    sl(0.15)
+    sl(0.2)
     movc(lvls[8])
     sl(3)
     for i in []:#lvls:
@@ -81,6 +83,28 @@ def act():
         sl(1)
 
     movc("close")
+
+def first_act():
+    movc("intr")
+    sl(0.2)
+    #movc("close")
+    #sl(0.1)
+    movc("main_fig")
+    sl(1)
+    movc(figs[1])
+    sl(1)
+    movc(divs[3])
+    find_place(3)
+    sl(0.4)
+    movc("enter")
+    sl(1)
+    movc(lvls[8])
+    sl(3)
+    for i in []:#lvls:
+        movc(i, 0)
+        sl(1)
+
+    #movc("close")
 
 m_lis = 0
 mouse = Controller()
@@ -119,4 +143,5 @@ for i in range(3):
 print(pos_s)
 
 sl(1)
-act()
+first_act()
+#act()
