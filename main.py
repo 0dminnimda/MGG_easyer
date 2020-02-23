@@ -144,6 +144,7 @@ rows = [f"{i}-row" for i in range(5)]
 lvls = [f"{i}-lvl" for i in range(9)]
 enms = [f"{i}-enm" for i in range(3)]
 gens = [f"{i}-gen" for i in range(7)]
+sort = [f"{i}-gen" for i in range(6)]
 pos_s = {
     "intr":(515, 845),
     "close":(1170, 200),
@@ -158,6 +159,7 @@ pos_s = {
     "1attack":(730, 780),
     "validate":(630, 750),
     "notag":(800, 700),
+    "open_sort":(410, 280),
     }
 for i in range(len(figs)): pos_s[figs[i]] = (360+255*i, 725)
 for i in range(len(divs)): pos_s[divs[i]] = (265+110.5*i, 730)
@@ -166,6 +168,7 @@ for i in range(3):
     for j in range(3):
         pos_s[lvls[i+j*3]] = (400+200*i, 355+100*j)
 for i in range(len(gens)): pos_s[gens[i]] = (275+40*i, 255)
+for i in range(len(sort)): pos_s[sort[i]] = (435, 300+20*i)
 pos_s[enms[0]] = (850, 320)
 pos_s[enms[1]] = (930, 410)
 pos_s[enms[2]] = (1020, 620)
@@ -181,13 +184,7 @@ else:
     movc("intr")
     #act()
     #atac()
-    for i in gens:
-        movc(i)
+    movc("open_sort", 0)
+    for i in sort:
+        movc(i, 0)
         sl(1)
-    (277, 255)
-    (317, 252)
-    (358, 254)
-    (396, 254)
-    (436, 253)
-    (477, 254)
-    (517, 256)
