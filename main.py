@@ -138,11 +138,12 @@ if bool(m_lis) is True:
     while m_lis:
         pass
 
-figs = [f"{i}_fig" for i in range(3)]
-divs = [f"{i}_div" for i in range(7)]
-rows = [f"{i}_row" for i in range(5)]
-lvls = [f"{i}_lvl" for i in range(9)]
-enms = [f"{i}_enm" for i in range(3)]
+figs = [f"{i}-fig" for i in range(3)]
+divs = [f"{i}-div" for i in range(7)]
+rows = [f"{i}-row" for i in range(5)]
+lvls = [f"{i}-lvl" for i in range(9)]
+enms = [f"{i}-enm" for i in range(3)]
+gens = [f"{i}-gen" for i in range(7)]
 pos_s = {
     "intr":(515, 845),
     "close":(1170, 200),
@@ -164,6 +165,7 @@ for i in range(len(rows)): pos_s[rows[i]] = (280, 330+83*i)
 for i in range(3):
     for j in range(3):
         pos_s[lvls[i+j*3]] = (400+200*i, 355+100*j)
+for i in range(len(gens)): pos_s[gens[i]] = (275+40*i, 255)
 pos_s[enms[0]] = (850, 320)
 pos_s[enms[1]] = (930, 410)
 pos_s[enms[2]] = (1020, 620)
@@ -178,4 +180,14 @@ if bool(fir) is True:
 else:
     movc("intr")
     #act()
-    atac()
+    #atac()
+    for i in gens:
+        movc(i)
+        sl(1)
+    (277, 255)
+    (317, 252)
+    (358, 254)
+    (396, 254)
+    (436, 253)
+    (477, 254)
+    (517, 256)
