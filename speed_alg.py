@@ -33,8 +33,12 @@ for i in range(num):
             arr[str(m)+"_"+str(n)] = a
 
         print("] ", end="")
-    print("\n", arr)
-
+    vals = list(arr.values())
+    keys = list(arr.keys())
+    sor = sorted(vals)[::-1]
+    #print("\n", arr, arr2)
+    for i in sor:
+        print(keys[vals.index(i)], end=" ")
     #print()
     #print(steps)
     #print(st_num)
