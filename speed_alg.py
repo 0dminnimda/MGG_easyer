@@ -8,10 +8,9 @@ steps = np.zeros_like(speed)
 st_num = np.zeros_like(speed)
 speed.sort()
 ratio = np.round_(speed/speed.min(), 2)
-num = 36
+num = 5
 
 print(speed)
-print(ratio)
 for i in range(num):
     st_num += steps
     steps = np.trunc(ratio + rem)
@@ -20,10 +19,12 @@ for i in range(num):
 
     for m in range(speed.shape[0]):
         print(m, end=": ")
-        for n in range(int(steps[m])):
-            print(st_num[m] + n, end="   ")
-    print()
-    print(steps)
-    print(st_num)
+        for n in range(1, int(steps[m]+1)):
+            print(speed[m]/(st_num[m]*0+n), end=" ")
+            pass#print(st_num[m] + n, end="   ")
+
+    #print()
+    #print(steps)
+    #print(st_num)
     #print(rem)
     #print(sp)
