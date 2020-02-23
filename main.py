@@ -108,8 +108,13 @@ def act():
     pass
 
 def find_need():
-    movc(rows[4])
-    pass
+    movc(gens[6])
+    sl(0.5)
+    movc("open_sort")
+    sl(0.5)
+    movc(sort[3])
+    sl(0.5)
+    movc(rows[0]) 
 
 def atac():
     #sl(3)
@@ -181,10 +186,6 @@ if bool(fir) is True:
     sl(0.5)
     first_act()
 else:
-    movc("intr")
+    #movc("intr")
     #act()
-    #atac()
-    movc("open_sort", 0)
-    for i in sort:
-        movc(i, 0)
-        sl(1)
+    atac()
