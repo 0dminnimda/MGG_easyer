@@ -11,17 +11,29 @@ ratio = np.round_(speed/speed.min(), 2)
 num = 5
 
 print(speed)
+print(ratio)
+print(speed*ratio)
+print(speed/ratio)
+print(ratio/speed)
 for i in range(num):
     st_num += steps
     steps = np.trunc(ratio + rem)
     rem = ratio - steps
-    print(f"\n{i} step")
-
+    print(f"\n\n{i} step")
+    arr = {}
     for m in range(speed.shape[0]):
-        print(m, end=": ")
-        for n in range(1, int(steps[m]+1)):
-            print(speed[m]/(st_num[m]*0+n), end=" ")
-            pass#print(st_num[m] + n, end="   ")
+        print("[", end="")
+
+        for n in range(int(steps[m])):
+            #print(n, end=" ")  # st_num[m]+
+            a = n*speed[m]/(ratio[m])
+            if a == 0:
+                a = speed[m]
+            print(a, end=" ")
+            arr[str(m)+"_"+str(n)] = a
+
+        print("] ", end="")
+    print("\n", arr)
 
     #print()
     #print(steps)
