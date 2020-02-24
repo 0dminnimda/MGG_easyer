@@ -23,7 +23,7 @@ w, h = template.shape[1::-1]
 while 1:
     img = capture(link_siz)
 
-    check = find(img, template)
+    loc, check = find(img, template)
 
     if check is True:
         for pt in zip(*loc[::-1]):
