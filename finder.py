@@ -9,13 +9,16 @@ def find(img_rgb, template, threshold=0.99):
     res = cv.matchTemplate(img_gray, template, cv.TM_CCOEFF_NORMED)
     loc = np.where(res >= threshold)
 
-    return img_rgb, loc
+    if loc[0].shape[0] >= 1 and loc[0].shape[0] >= 1:
+        return img_rgb, loc, True
+    else:
+        return img_rgb, loc, False
 
 img = cv.imread('img.png')
-template = cv.imread('img4.png')
+template = cv.imread('img2.png')
 w, h = template.shape[1::-1]
-img_rgb, loc = find(img, template)
-print(loc[0].shape, loc[0].shape)
+img_rgb, loc, che = find(img, template)
+print(che)
 
 while 1:
     for pt in zip(*loc[::-1]):
