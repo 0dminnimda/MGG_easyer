@@ -24,4 +24,4 @@ while 1:
     if cv.waitKey(1) & 0xFF == ord('2'):
         cv.destroyAllWindows()
         break
-cv.imwrite("img.png", img)
+cv.imwrite("img12.png", img)
