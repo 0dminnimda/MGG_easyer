@@ -2,6 +2,7 @@ from pynput import mouse as mou
 from pynput import keyboard
 from pynput.mouse import Button, Controller
 from time import sleep as sl
+from detection import glob
 
 def on_move(x, y):
     #print('Pointer moved to {(x, y)}')
@@ -143,41 +144,42 @@ if bool(m_lis) is True:
     while m_lis:
         pass
 
-figs = [f"{i}-fig" for i in range(3)]
-divs = [f"{i}-div" for i in range(7)]
-rows = [f"{i}-row" for i in range(5)]
-lvls = [f"{i}-lvl" for i in range(9)]
-enms = [f"{i}-enm" for i in range(3)]
-gens = [f"{i}-gen" for i in range(7)]
-sort = [f"{i}-gen" for i in range(6)]
-pos_s = {
-    "intr":(515, 845),
-    "close":(1170, 200),
-    "up":(550, 303),
-    "down":(550, 666),
-    "main_fig":(715, 750),
-    "enter":(600, 545),
-    "back":(340, 760),
-    "left":(350, 470),
-    "righ":(850, 470),
-    "0attack":(570, 780),
-    "1attack":(730, 780),
-    "validate":(630, 750),
-    "notag":(800, 700),
-    "open_sort":(410, 280),
-    }
-for i in range(len(figs)): pos_s[figs[i]] = (360+255*i, 725)
-for i in range(len(divs)): pos_s[divs[i]] = (265+110.5*i, 730)
-for i in range(len(rows)): pos_s[rows[i]] = (280, 330+83*i)
-for i in range(3):
-    for j in range(3):
-        pos_s[lvls[i+j*3]] = (400+200*i, 355+100*j)
-for i in range(len(gens)): pos_s[gens[i]] = (275+40*i, 255)
-for i in range(len(sort)): pos_s[sort[i]] = (435, 300+20*i)
-pos_s[enms[0]] = (850, 320)
-pos_s[enms[1]] = (930, 410)
-pos_s[enms[2]] = (1020, 620)
-print(pos_s)
+for _ in range(1):
+    figs = [f"{i}-fig" for i in range(3)]
+    divs = [f"{i}-div" for i in range(7)]
+    rows = [f"{i}-row" for i in range(5)]
+    lvls = [f"{i}-lvl" for i in range(9)]
+    enms = [f"{i}-enm" for i in range(3)]
+    gens = [f"{i}-gen" for i in range(7)]
+    sort = [f"{i}-gen" for i in range(6)]
+    pos_s = {
+        "intr":(515, 845),
+        "close":(1170, 200),
+        "up":(550, 303),
+        "down":(550, 666),
+        "main_fig":(715, 750),
+        "enter":(600, 545),
+        "back":(340, 760),
+        "left":(350, 470),
+        "righ":(850, 470),
+        "0attack":(570, 780),
+        "1attack":(730, 780),
+        "validate":(630, 750),
+        "notag":(800, 700),
+        "open_sort":(410, 280),
+        }
+    for i in range(len(figs)): pos_s[figs[i]] = (360+255*i, 725)
+    for i in range(len(divs)): pos_s[divs[i]] = (265+110.5*i, 730)
+    for i in range(len(rows)): pos_s[rows[i]] = (280, 330+83*i)
+    for i in range(3):
+        for j in range(3):
+            pos_s[lvls[i+j*3]] = (400+200*i, 355+100*j)
+    for i in range(len(gens)): pos_s[gens[i]] = (275+40*i, 255)
+    for i in range(len(sort)): pos_s[sort[i]] = (435, 300+20*i)
+    pos_s[enms[0]] = (850, 320)
+    pos_s[enms[1]] = (930, 410)
+    pos_s[enms[2]] = (1020, 620)
+    print(pos_s)
 
 sl(1)
 if bool(fir) is True:
