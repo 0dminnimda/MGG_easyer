@@ -126,6 +126,8 @@ def atac():
     else:
         movc(atack[0])
     movc(enms[1])
+    movc(enms[0])
+    movc(enms[2])
 
 #listenerk = keyboard.Listener(
 #    on_press=on_press,
@@ -181,7 +183,7 @@ for _ in range(1):
     for i in range(len(gens)): pos_s[gens[i]] = (275+40*i, 255)
     for i in range(len(sort)): pos_s[sort[i]] = (435, 300+20*i)
     pos_s[enms[0]] = (850, 320)
-    pos_s[enms[1]] = (950, 430)
+    pos_s[enms[1]] = (940, 430)
     pos_s[enms[2]] = (1020, 620)
     print(pos_s)
 
