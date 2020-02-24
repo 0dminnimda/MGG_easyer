@@ -1,21 +1,20 @@
 import cv2 as cv
 import numpy as np
 
-def find(img, template, threshold=0.99):
-    img_rgb = img
+def find(img_rgb, template, threshold=0.99):
     img_gray = cv.cvtColor(img_rgb, cv.COLOR_BGR2GRAY)
 
     template = cv.cvtColor(template, cv.COLOR_BGR2GRAY)
-    w, h = template.shape[::-1]
 
     res = cv.matchTemplate(img_gray, template, cv.TM_CCOEFF_NORMED)
     loc = np.where(res >= threshold)
 
-    return img_rgb, loc, w, h
+    return img_rgb, loc
 
 img = cv.imread('img.png')
-template = cv.imread('img2.png')
-img_rgb, loc, w, h = find(img, template)
+template = cv.imread('img4.png')
+w, h = template.shape[1::-1]
+img_rgb, loc = find(img, template)
 print(loc[0].shape, loc[0].shape)
 
 while 1:
