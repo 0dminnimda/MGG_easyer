@@ -100,7 +100,7 @@ def act():
     movc("validate")
     sl(2)
     movc("notag")
-    #movc("validate")
+    movc("validate")
     sl(10)
     for i in []:#lvls:
         movc(i, 0)
@@ -118,16 +118,17 @@ def find_need():
     movc(rows[0]) 
 
 def atac():
-    #sl(3)
-    movc("0attack")
+    global gl_num
+    if glob() is True:
+        if gl_num < 2:
+            movc(atack[1])
+        else:
+            movc(atack[0])
+        gl_num += 1
+    else:
+        movc(atack[0])
     sl(1)
-    movc("1attack")
-    sl(1)
-    movc(enms[0], 0)
-    sl(1)
-    movc(enms[1], 0)
-    sl(1)
-    movc(enms[2], 0)
+    movc(enms[1])
 
 m_lis = 0
 fir = 0
@@ -152,6 +153,7 @@ for _ in range(1):
     enms = [f"{i}-enm" for i in range(3)]
     gens = [f"{i}-gen" for i in range(7)]
     sort = [f"{i}-gen" for i in range(6)]
+    atack = [f"{i}-atc" for i in range(2)]
     pos_s = {
         "intr":(515, 845),
         "close":(1170, 200),
@@ -162,8 +164,8 @@ for _ in range(1):
         "back":(340, 760),
         "left":(350, 470),
         "righ":(850, 470),
-        "0attack":(570, 780),
-        "1attack":(730, 780),
+        atack[0]:(570, 780),
+        atack[1]:(730, 780),
         "validate":(630, 750),
         "notag":(800, 700),
         "open_sort":(410, 280),
@@ -188,7 +190,9 @@ if bool(fir) is True:
     sl(0.5)
     first_act()
 else:
-    print(glob())
+    gl_num = 10
     movc("intr")
-    act()
-    #atac()
+    #act()
+    for i in range(10):
+        atac()
+        sl(5.5)
