@@ -2,6 +2,7 @@ import cv2 as cv
 from mss import mss
 import numpy as np
 from finder import find
+import pyscreenshot as ps
 
 def capture(size):
     return np.array(mss().grab({'top': size[1],
@@ -9,8 +10,11 @@ def capture(size):
                        'width': size[2],
                        'height': size[3]}))
 
+def capt2(s):
+    return np.array(ps.grab(bbox=[s[0], s[1], s[0]+s[2], s[1]+s[3]]))
+
 def glob():
-    return find(capture([350, 865, 275, 132]), cv.imread('img2.png'))[1]
+    return find(capt2([350, 865, 275, 132]), cv.imread('img2.png'))[1]
 
 if __name__ == "__main__":
     sct = mss()
@@ -23,7 +27,7 @@ if __name__ == "__main__":
     w, h = template.shape[1::-1]
 
     while 1:
-        img = capture(link_siz)
+        img = capture(link_siz) #capt2
 
         loc, check = find(img, template)
 

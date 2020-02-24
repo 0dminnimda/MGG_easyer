@@ -188,7 +188,7 @@ if bool(fir) is True:
     sl(0.5)
     first_act()
 else:
-    #print(glob())
+    print(glob())
     movc("intr")
     act()
     #atac()
