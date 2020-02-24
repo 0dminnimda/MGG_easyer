@@ -38,11 +38,6 @@ def on_release(key):
         # Stop listener
         return False
 
-#listenerk = keyboard.Listener(
-#    on_press=on_press,
-#    on_release=on_release)
-#listenerk.start()
-
 def first_act():
     sl(0.2)
     movc("main_fig")
@@ -90,31 +85,34 @@ def act():
     find_place(8)
     sl(0.4)
     movc("enter")
-    sl(0.4)
-    movc(lvls[8])
-    sl(3)
-    find_need()
-    movc("down")
-    movc(rows[3])
-    movc(rows[4])
-    movc("validate")
-    sl(2)
-    movc("notag")
-    movc("validate")
-    sl(10)
+    act_after()
     for i in []:#lvls:
         movc(i, 0)
         sl(1)
     #movc("close")
     pass
 
+def act_after():
+    sl(0.4)
+    movc(lvls[8])
+    sl(2)
+    find_need()
+    movc("down")
+    movc(rows[3])
+    movc(rows[4])
+    movc("validate")
+    sl(1)
+    movc("notag")
+    movc("validate")
+    sl(8)
+
 def find_need():
-    movc(gens[6])
-    sl(0.5)
     movc("open_sort")
-    sl(0.5)
+    sl(0.4)
     movc(sort[3])
-    sl(0.5)
+    sl(0.3)
+    movc(gens[6])
+    sl(0.3)
     movc(rows[0]) 
 
 def atac():
@@ -127,8 +125,12 @@ def atac():
         gl_num += 1
     else:
         movc(atack[0])
-    #sl(1)
     movc(enms[1])
+
+#listenerk = keyboard.Listener(
+#    on_press=on_press,
+#    on_release=on_release)
+#listenerk.start()
 
 m_lis = 0
 fir = 0
@@ -179,9 +181,11 @@ for _ in range(1):
     for i in range(len(gens)): pos_s[gens[i]] = (275+40*i, 255)
     for i in range(len(sort)): pos_s[sort[i]] = (435, 300+20*i)
     pos_s[enms[0]] = (850, 320)
-    pos_s[enms[1]] = (930, 410)
+    pos_s[enms[1]] = (950, 430)
     pos_s[enms[2]] = (1020, 620)
     print(pos_s)
+
+fig_num = 1
 
 sl(1)
 if bool(fir) is True:
@@ -190,11 +194,16 @@ if bool(fir) is True:
     sl(0.5)
     first_act()
 else:
-    gl_num = 0
     movc("intr")
     act()
-    while 1:
-        if reward() is True:
-            break
-        atac()
-        sl(5.5)
+    for fi in range(fig_num):
+        gl_num = 0
+        while 1:
+            if reward() is True:
+                print("end")
+                movc("close")
+                break
+            atac()
+            sl(2)
+        if fi != fig_num - 1:
+            act_after()

@@ -46,4 +46,4 @@ if __name__ == "__main__":
             cv.destroyAllWindows()
             break
 
-    #cv.imwrite("img12.png", img)
+    cv.imwrite("img13.png", img)
