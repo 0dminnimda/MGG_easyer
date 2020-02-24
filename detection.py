@@ -16,14 +16,18 @@ def capt2(s):
 def glob():
     return find(capt2([350, 865, 275, 132]), cv.imread('img2.png'))[1]
 
+def reward():
+    return find(capt2([620, 225, 290, 130]), cv.imread('img6.png'))[1]
+
 if __name__ == "__main__":
     sct = mss()
     whole_siz = [0, 225, 1500, 775]
     siz = [350, 865, 275, 132]
-    link_siz = siz
+    rev = [620, 225, 290, 130]
+    link_siz = rev
 
     check = False
-    template = cv.imread('img2.png')
+    template = cv.imread('img6.png')
     w, h = template.shape[1::-1]
 
     while 1:

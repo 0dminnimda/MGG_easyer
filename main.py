@@ -2,7 +2,7 @@ from pynput import mouse as mou
 from pynput import keyboard
 from pynput.mouse import Button, Controller
 from time import sleep as sl
-from detection import glob
+from detection import glob, reward
 
 def on_move(x, y):
     #print('Pointer moved to {(x, y)}')
@@ -90,7 +90,7 @@ def act():
     find_place(8)
     sl(0.4)
     movc("enter")
-    sl(0.3)
+    sl(0.4)
     movc(lvls[8])
     sl(3)
     find_need()
@@ -127,7 +127,7 @@ def atac():
         gl_num += 1
     else:
         movc(atack[0])
-    sl(1)
+    #sl(1)
     movc(enms[1])
 
 m_lis = 0
@@ -190,9 +190,11 @@ if bool(fir) is True:
     sl(0.5)
     first_act()
 else:
-    gl_num = 10
+    gl_num = 0
     movc("intr")
-    #act()
-    for i in range(10):
+    act()
+    while 1:
+        if reward() is True:
+            break
         atac()
         sl(5.5)
