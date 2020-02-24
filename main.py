@@ -86,9 +86,6 @@ def act():
     sl(0.4)
     movc("enter")
     act_after()
-    for i in []:#lvls:
-        movc(i, 0)
-        sl(1)
     #movc("close")
     pass
 
@@ -107,13 +104,15 @@ def act_after():
     sl(8)
 
 def find_need():
+    sl(0.2)
+    movc(gens[6])
+    sl(0.6)
     movc("open_sort")
     sl(0.4)
     movc(sort[3])
-    sl(0.3)
-    movc(gens[6])
-    sl(0.3)
-    movc(rows[0]) 
+    sl(0.1)
+    movc(rows[0])
+    movc(gens[0])
 
 def atac():
     global gl_num
@@ -156,7 +155,7 @@ for _ in range(1):
     lvls = [f"{i}-lvl" for i in range(9)]
     enms = [f"{i}-enm" for i in range(3)]
     gens = [f"{i}-gen" for i in range(7)]
-    sort = [f"{i}-gen" for i in range(6)]
+    sort = [f"{i}-sor" for i in range(6)]
     atack = [f"{i}-atc" for i in range(2)]
     pos_s = {
         "intr":(515, 845),
@@ -172,7 +171,7 @@ for _ in range(1):
         atack[1]:(730, 780),
         "validate":(630, 750),
         "notag":(800, 700),
-        "open_sort":(410, 280),
+        "open_sort":(410, 290),
         }
     for i in range(len(figs)): pos_s[figs[i]] = (360+255*i, 725)
     for i in range(len(divs)): pos_s[divs[i]] = (265+110.5*i, 730)
@@ -195,10 +194,12 @@ if bool(fir) is True:
     first_act()
     sl(0.5)
     first_act()
+    movc("intr")
 else:
     movc("intr")
-    act()
-    for fi in range(fig_num):
+    find_need()
+    #act()
+    '''for fi in range(fig_num):
         gl_num = 0
         while 1:
             if reward() is True:
@@ -208,4 +209,4 @@ else:
             atac()
             sl(2)
         if fi != fig_num - 1:
-            act_after()
+            act_after()'''
