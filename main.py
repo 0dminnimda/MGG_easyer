@@ -94,25 +94,54 @@ def act_after():
     movc(lvls[8])
     sl(2)
     find_need()
-    movc("down")
-    movc(rows[3])
-    movc(rows[4])
-    movc("validate")
-    sl(1)
-    movc("notag")
-    movc("validate")
-    sl(8)
+    after_find()
+    #sl(0.5)
+    #movc("down")
+    #sl(0.5)
+    #movc(rows[3])
+    #sl(0.5)
+    #movc(rows[4])
+    #sl(0.5)
+    #movc("validate")
+    #sl(1)
+    #movc("notag")
+    #sl(0.5)
+    #movc("validate")
+    #sl(8)
+    pass
 
 def find_need():
-    sl(0.2)
+    n = 0.6
     movc(gens[6])
-    sl(0.6)
+    sl(n)
     movc("open_sort")
-    sl(0.4)
+    sl(n)
     movc(sort[3])
-    sl(0.1)
+    sl(n)
     movc(rows[0])
+    sl(n)
+    movc("open_sort")
+    sl(n)
+    movc(sort[1])
+    sl(n)
     movc(gens[0])
+    sl(n)
+
+def after_find():
+    n = 0.2
+    sl(n)
+    movc("down")
+    sl(n)
+    movc(rows[3])
+    sl(n)
+    movc(rows[4])
+    sl(n*2)
+    movc("validate")
+    sl(n*2)
+    movc("notag")
+    sl(n*2)
+    movc("validate")
+    sl(8)
 
 def atac():
     global gl_num
@@ -161,7 +190,7 @@ for _ in range(1):
         "intr":(515, 845),
         "close":(1170, 200),
         "up":(550, 303),
-        "down":(550, 666),
+        "down":(550, 685),
         "main_fig":(715, 750),
         "enter":(600, 545),
         "back":(340, 760),
@@ -197,9 +226,8 @@ if bool(fir) is True:
     movc("intr")
 else:
     movc("intr")
-    find_need()
-    #act()
-    '''for fi in range(fig_num):
+    act()
+    for fi in range(fig_num):
         gl_num = 0
         while 1:
             if reward() is True:
@@ -209,4 +237,5 @@ else:
             atac()
             sl(2)
         if fi != fig_num - 1:
-            act_after()'''
+            act_after()
+    movc("intr")
