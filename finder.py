@@ -9,7 +9,6 @@ def find(img, template, threshold=0.99):
     w, h = template.shape[::-1]
 
     res = cv.matchTemplate(img_gray, template, cv.TM_CCOEFF_NORMED)
-    threshold = 0.99
     loc = np.where(res >= threshold)
 
     return img_rgb, loc, w, h
