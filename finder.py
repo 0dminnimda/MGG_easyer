@@ -10,22 +10,23 @@ def find(img_rgb, template, threshold=0.99):
     loc = np.where(res >= threshold)
 
     if loc[0].shape[0] >= 1 and loc[0].shape[0] >= 1:
-        return img_rgb, loc, True
+        return loc, True
     else:
-        return img_rgb, loc, False
+        return loc, False
 
-img = cv.imread('img.png')
-template = cv.imread('img2.png')
-w, h = template.shape[1::-1]
-img_rgb, loc, che = find(img, template)
-print(che)
+if __name__ == "__main__":
+    img = cv.imread('img.png')
+    template = cv.imread('img2.png')
+    w, h = template.shape[1::-1]
+    loc, che = find(img, template)
+    print(che)
 
-while 1:
-    for pt in zip(*loc[::-1]):
-        cv.rectangle(img_rgb, pt, (pt[0] + w, pt[1] + h), (0, 255, 255), 2)
+    while 1:
+        for pt in zip(*loc[::-1]):
+            cv.rectangle(img, pt, (pt[0] + w, pt[1] + h), (0, 255, 255), 2)
 
-    if cv.waitKey(1) & 0xFF == ord('2'):
-        cv.destroyAllWindows()
-        break
+        if cv.waitKey(1) & 0xFF == ord('2'):
+            cv.destroyAllWindows()
+            break
 
-    cv.imshow('Detected', img_rgb)
+        cv.imshow('Detected', img)
