@@ -100,7 +100,7 @@ def act():
     movc("validate")
     sl(2)
     movc("notag")
-    movc("validate")
+    #movc("validate")
     sl(10)
     for i in []:#lvls:
         movc(i, 0)
@@ -144,7 +144,7 @@ if bool(m_lis) is True:
     while m_lis:
         pass
 
-for _ in range(1):
+for _ in range(1): 
     figs = [f"{i}-fig" for i in range(3)]
     divs = [f"{i}-div" for i in range(7)]
     rows = [f"{i}-row" for i in range(5)]
@@ -188,6 +188,7 @@ if bool(fir) is True:
     sl(0.5)
     first_act()
 else:
-    #movc("intr")
-    #act()
-    atac()
+    #print(glob())
+    movc("intr")
+    act()
+    #atac()

@@ -3,10 +3,8 @@ from mss import mss
 import numpy as np
 from finder import find
 
-sct = mss()
-
 def capture(size):
-    return np.array(sct.grab({'top': size[1],
+    return np.array(mss().grab({'top': size[1],
                        'left': size[0],
                        'width': size[2],
                        'height': size[3]}))
@@ -15,6 +13,7 @@ def glob():
     return find(capture([350, 865, 275, 132]), cv.imread('img2.png'))[1]
 
 if __name__ == "__main__":
+    sct = mss()
     whole_siz = [0, 225, 1500, 775]
     siz = [350, 865, 275, 132]
     link_siz = siz
