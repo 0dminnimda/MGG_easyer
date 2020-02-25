@@ -218,14 +218,15 @@ for _ in range(1):
     pos_s[enms[2]] = (1020, 620)
     print(pos_s)
 
-fig_num = 5
+fig_num = 1
+
 
 lose = cv.imread('img7.png')
 win = cv.imread('img8.png')
 erimg = cv.imread('img15.png')
 
+lim = 5
 sl(1)
-err = False
 if bool(fir) is True:
     movc("intr")
     first_act()
@@ -237,10 +238,17 @@ else:
     act()
     for fi in range(fig_num):
         gl_num = 0
+        err = 0
         while 1:
-            if error(erimg) is True or err is True:
+            last = False
+            if error(erimg) is True:
+                last = not False
+                err += 1
+            if last is False:
+                err = 0
+            print(err)
+            if err > lim:
                 print("error")
-                err = True
                 break
             if (reward(win) or reward(lose)) is True:
                 print("end")
@@ -248,14 +256,15 @@ else:
                 break
             atac()
             sl(2)
-        if err is True:
+        if err > lim:
             break
         if fi != fig_num - 1:
             act_after()
+        sl(1)
         movc("ok")
-        sl(0.2)
+        sl(0.4)
         movc("ok")
-    if err is True:
-        movc("refresh")
+    if err > lim:
+        #movc("refresh")
         sl(0.2)
     movc("intr")
