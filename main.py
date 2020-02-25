@@ -203,6 +203,7 @@ for _ in range(1):
         "notag":(800, 700),
         "open_sort":(410, 290),
         "ok":(610, 727),
+        "refresh":(85, 50),
         }
     for i in range(len(figs)): pos_s[figs[i]] = (360+255*i, 725)
     for i in range(len(divs)): pos_s[divs[i]] = (265+110.5*i, 730)
@@ -224,9 +225,7 @@ win = cv.imread('img8.png')
 erimg = cv.imread('img15.png')
 
 sl(1)
-err = False
-#movc("intr")
-#movc("ok", 0)
+err = not False
 if bool(fir) is True:
     movc("intr")
     first_act()
@@ -239,7 +238,7 @@ else:
     for fi in range(fig_num):
         gl_num = 0
         while 1:
-            if error(erimg) is True:
+            if error(erimg) is True or err is True:
                 print("error")
                 err = True
                 break
@@ -256,5 +255,6 @@ else:
         movc("ok")
         sl(0.2)
         movc("ok")
+    movc("refresh")
     sl(0.2)
     movc("intr")
