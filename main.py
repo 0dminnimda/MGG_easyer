@@ -225,7 +225,7 @@ win = cv.imread('img8.png')
 erimg = cv.imread('img15.png')
 
 sl(1)
-err = not False
+err = False
 if bool(fir) is True:
     movc("intr")
     first_act()
@@ -255,6 +255,7 @@ else:
         movc("ok")
         sl(0.2)
         movc("ok")
-    movc("refresh")
-    sl(0.2)
+    if err is True:
+        movc("refresh")
+        sl(0.2)
     movc("intr")
