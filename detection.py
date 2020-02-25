@@ -16,8 +16,8 @@ def capt2(s):
 def glob():
     return find(capt2([350, 865, 275, 132]), cv.imread('img2.png'))[1]
 
-def reward():
-    return find(capt2([620, 225, 290, 130]), cv.imread('img6.png'))[1]
+def reward(img):
+    return find(capt2([620, 225, 290, 130]), img)[1]
 
 if __name__ == "__main__":
     sct = mss()
@@ -27,12 +27,12 @@ if __name__ == "__main__":
     link_siz = rev
 
     check = False
-    template = cv.imread('img6.png')
+    template = cv.imread('img7.png')
     w, h = template.shape[1::-1]
 
     while 1:
         img = capture(link_siz) #capt2
-
+        
         loc, check = find(img, template)
 
         if check is True:
@@ -46,4 +46,4 @@ if __name__ == "__main__":
             cv.destroyAllWindows()
             break
 
-    cv.imwrite("img13.png", img)
+    cv.imwrite("img14.png", img)

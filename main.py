@@ -3,6 +3,7 @@ from pynput import keyboard
 from pynput.mouse import Button, Controller
 from time import sleep as sl
 from detection import glob, reward
+import cv2 as cv
 
 def on_move(x, y):
     #print('Pointer moved to {(x, y)}')
@@ -217,6 +218,9 @@ for _ in range(1):
 
 fig_num = 1
 
+lose = cv.imread('img7.png')
+win = cv.imread('img5.png')
+
 sl(1)
 if bool(fir) is True:
     movc("intr")
@@ -230,7 +234,7 @@ else:
     for fi in range(fig_num):
         gl_num = 0
         while 1:
-            if reward() is True:
+            if (reward(win) or reward(lose)) is True:
                 print("end")
                 movc("close")
                 break

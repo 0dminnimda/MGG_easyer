@@ -9,7 +9,7 @@ def find(img_rgb, template, threshold=0.99):
     res = cv.matchTemplate(img_gray, template, cv.TM_CCOEFF_NORMED)
     loc = np.where(res >= threshold)
 
-    if loc[0].shape[0] >= 1 and loc[0].shape[0] >= 1:
+    if loc[0].shape[0] >= 1 or loc[0].shape[0] >= 1:
         return loc, True
     else:
         return loc, False
