@@ -225,10 +225,6 @@ win = cv.imread('img8.png')
 sl(1)
 #movc("intr")
 #movc("ok", 0)
-while 1:
-    if (reward(win) or reward(lose)) is True:#if reward(win) is True or reward(lose) is True:
-        print(11)
-'''
 if bool(fir) is True:
     movc("intr")
     first_act()
@@ -252,4 +248,4 @@ else:
         movc("ok")
         sl(0.2)
         movc("ok")
-    movc("intr")'''
+    movc("intr")
