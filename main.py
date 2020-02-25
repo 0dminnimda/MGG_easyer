@@ -129,7 +129,7 @@ def find_need():
     sl(n)
 
 def after_find():
-    n = 0.2
+    n = 0.3
     sl(n)
     movc("down")
     sl(n)
@@ -202,6 +202,7 @@ for _ in range(1):
         "validate":(630, 750),
         "notag":(800, 700),
         "open_sort":(410, 290),
+        "ok":(610, 727),
         }
     for i in range(len(figs)): pos_s[figs[i]] = (360+255*i, 725)
     for i in range(len(divs)): pos_s[divs[i]] = (265+110.5*i, 730)
@@ -216,12 +217,18 @@ for _ in range(1):
     pos_s[enms[2]] = (1020, 620)
     print(pos_s)
 
-fig_num = 1
+fig_num = 2
 
 lose = cv.imread('img7.png')
-win = cv.imread('img5.png')
+win = cv.imread('img8.png')
 
 sl(1)
+#movc("intr")
+#movc("ok", 0)
+while 1:
+    if (reward(win) or reward(lose)) is True:#if reward(win) is True or reward(lose) is True:
+        print(11)
+'''
 if bool(fir) is True:
     movc("intr")
     first_act()
@@ -242,4 +249,7 @@ else:
             sl(2)
         if fi != fig_num - 1:
             act_after()
-    movc("intr")
+        movc("ok")
+        sl(0.2)
+        movc("ok")
+    movc("intr")'''

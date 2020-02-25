@@ -19,6 +19,9 @@ def glob():
 def reward(img):
     return find(capt2([620, 225, 290, 130]), img)[1]
 
+def reward_h(img):
+    return find(capt2([620, 225, 290, 130]), img)
+
 if __name__ == "__main__":
     sct = mss()
     whole_siz = [0, 225, 1500, 775]
@@ -27,13 +30,13 @@ if __name__ == "__main__":
     link_siz = rev
 
     check = False
-    template = cv.imread('img7.png')
+    template = cv.imread('img8.png')
     w, h = template.shape[1::-1]
 
     while 1:
-        img = capture(link_siz) #capt2
+        img = capt2(link_siz)# capture(link_siz) #capt2
         
-        loc, check = find(img, template)
+        loc, check = reward_h(template)#find(img, template)
 
         if check is True:
             for pt in zip(*loc[::-1]):
