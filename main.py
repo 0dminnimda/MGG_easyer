@@ -220,7 +220,6 @@ for _ in range(1):
 
 fig_num = 1
 
-
 lose = cv.imread('img7.png')
 win = cv.imread('img8.png')
 erimg = cv.imread('img15.png')
@@ -241,13 +240,16 @@ else:
         err = 0
         while 1:
             last = False
+            if err >= lim//2:
+                sl(0.5)
+                print("chance")
             if error(erimg) is True:
                 last = not False
                 err += 1
             if last is False:
                 err = 0
             print(err)
-            if err > lim:
+            if err >= lim:
                 print("error")
                 break
             if (reward(win) or reward(lose)) is True:
@@ -256,15 +258,15 @@ else:
                 break
             atac()
             sl(2)
-        if err > lim:
+        if err >= lim:
             break
+        sl(0.5)
+        movc("ok")
+        sl(0.5)
+        movc("ok")
         if fi != fig_num - 1:
             act_after()
-        sl(1)
-        movc("ok")
-        sl(0.4)
-        movc("ok")
-    if err > lim:
+    if err >= lim:
         #movc("refresh")
         sl(0.2)
     movc("intr")
