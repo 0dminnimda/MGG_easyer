@@ -19,6 +19,9 @@ def glob():
 def reward(img):
     return find(capt2([620, 225, 290, 130]), img)[1]
 
+def error(img):
+    return find(capt2([620, 625, 290, 130]), img)[1]
+
 def reward_h(img):
     return find(capt2([620, 225, 290, 130]), img)
 
@@ -27,7 +30,8 @@ if __name__ == "__main__":
     whole_siz = [0, 225, 1500, 775]
     siz = [350, 865, 275, 132]
     rev = [620, 225, 290, 130]
-    link_siz = rev
+    err = [620, 625, 290, 130]
+    link_siz = err
 
     check = False
     template = cv.imread('img8.png')
@@ -49,4 +53,4 @@ if __name__ == "__main__":
             cv.destroyAllWindows()
             break
 
-    cv.imwrite("img14.png", img)
+    cv.imwrite("img15.png", img)

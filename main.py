@@ -2,7 +2,7 @@ from pynput import mouse as mou
 from pynput import keyboard
 from pynput.mouse import Button, Controller
 from time import sleep as sl
-from detection import glob, reward
+from detection import glob, reward, error
 import cv2 as cv
 
 def on_move(x, y):
@@ -217,12 +217,14 @@ for _ in range(1):
     pos_s[enms[2]] = (1020, 620)
     print(pos_s)
 
-fig_num = 2
+fig_num = 5
 
 lose = cv.imread('img7.png')
 win = cv.imread('img8.png')
+erimg = cv.imread('img15.png')
 
 sl(1)
+err = False
 #movc("intr")
 #movc("ok", 0)
 if bool(fir) is True:
@@ -237,15 +239,22 @@ else:
     for fi in range(fig_num):
         gl_num = 0
         while 1:
+            if error(erimg) is True:
+                print("error")
+                err = True
+                break
             if (reward(win) or reward(lose)) is True:
                 print("end")
                 movc("close")
                 break
             atac()
             sl(2)
+        if err is True:
+            break
         if fi != fig_num - 1:
             act_after()
         movc("ok")
         sl(0.2)
         movc("ok")
+    sl(0.2)
     movc("intr")
