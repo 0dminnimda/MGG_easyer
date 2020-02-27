@@ -47,11 +47,11 @@ def first_act():
     sl(1)
     movc(divs[3])
     find_place(8)
-    sl(0.4)
+    sl(1)
     movc("enter")
     sl(1)
     movc(lvls[8])
-    sl(3)
+    sl(4)
     movc("close")
 
 def mp():
@@ -177,7 +177,7 @@ def buy():
 #listenerk.start()
 
 m_lis = 0
-fir = 0
+fir = 1
 
 mouse = Controller()
 if bool(m_lis) is True:
@@ -242,7 +242,7 @@ lose = cv.imread('img7.png')
 win = cv.imread('img8.png')
 erimg = cv.imread('img15.png')
 
-lim = 50000
+lim = 5
 
 err = 0
 sl(1)
@@ -262,15 +262,15 @@ else:
             err = 0
             while 1:
                 last = False
-                if err >= lim//2:
-                    sl(0.5)
-                    print("chance")
+                if err > lim/2:
+                    #sl(0.5)
+                    print("chance", end=" ")
                 if error(erimg) is True:
                     last = not False
                     err += 1
                 if last is False:
                     err = 0
-                #print(err, end=" ")
+                print(err, end=" ")
                 if err >= lim:
                     print("error")
                     break
