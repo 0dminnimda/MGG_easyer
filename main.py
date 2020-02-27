@@ -223,7 +223,7 @@ for _ in range(1):
     print(pos_s)
 
 fig_num = 1
-ses_num = 5
+ses_num = 0#5
 
 lose = cv.imread('img7.png')
 win = cv.imread('img8.png')
@@ -244,8 +244,12 @@ def buy():
     sl(0.5)
     movc("close")
 
-sl(1000)
+#movc("intr")
+#sl(0.2)
+#buy()
+#sl(1000)
 
+err = 0
 sl(1)
 if bool(fir) is True:
     movc("intr")
@@ -256,6 +260,7 @@ if bool(fir) is True:
 else:
     movc("intr")
     for ses in range(fig_num):
+        print(f"{ses} session")
         act()
         for fi in range(ses_num):
             gl_num = 0
@@ -292,7 +297,11 @@ else:
             movc("ok")
             if fi != ses*ses_num - 1:
                 act_after()
-
+        if err >= lim:
+            break
+        movc("close")
+        sl(0.5)
+        buy()
     if err >= lim:
         #movc("refresh")
         sl(0.2)
