@@ -93,7 +93,7 @@ def act():
 def act_after():
     sl(0.4)
     movc(lvls[8])
-    sl(2)
+    sl(2.5)
     find_need()
     after_find()
     #sl(0.5)
@@ -112,24 +112,24 @@ def act_after():
     pass
 
 def find_need():
-    n = 0.6
+    n = 0.5
     movc(gens[6])
-    sl(n)
+    sl(n*2)
     movc("open_sort")
-    sl(n)
+    sl(n*2)
     movc(sort[3])
     sl(n)
     movc(rows[0])
     sl(n)
     movc("open_sort")
-    sl(n)
+    sl(n*2)
     movc(sort[1])
     sl(n)
     movc(gens[0])
-    sl(n)
+    sl(n*2)
 
 def after_find():
-    n = 0.3
+    n = 0.4
     sl(n)
     movc("down")
     sl(n)
@@ -157,6 +157,19 @@ def atac():
     movc(enms[1])
     movc(enms[0])
     movc(enms[2])
+
+def buy():
+    movc("shop")
+    sl(0.5)
+    movc("supplies")
+    sl(0.5)
+    movc("shop_left")
+    sl(0.5)
+    movc("shop_left")
+    sl(0.5)
+    movc("passes")
+    sl(0.5)
+    movc("close")
 
 #listenerk = keyboard.Listener(
 #    on_press=on_press,
@@ -222,32 +235,14 @@ for _ in range(1):
     pos_s[enms[2]] = (1020, 620)
     print(pos_s)
 
-fig_num = 1
-ses_num = 0#5
+fig_num = 2
+ses_num = 5
 
 lose = cv.imread('img7.png')
 win = cv.imread('img8.png')
 erimg = cv.imread('img15.png')
 
 lim = 50000
-
-def buy():
-    movc("shop")
-    sl(0.5)
-    movc("supplies")
-    sl(0.5)
-    movc("shop_left")
-    sl(0.5)
-    movc("shop_left")
-    sl(0.5)
-    movc("passes")
-    sl(0.5)
-    movc("close")
-
-#movc("intr")
-#sl(0.2)
-#buy()
-#sl(1000)
 
 err = 0
 sl(1)
@@ -275,7 +270,7 @@ else:
                     err += 1
                 if last is False:
                     err = 0
-                print(err, end=" ")
+                #print(err, end=" ")
                 if err >= lim:
                     print("error")
                     break
@@ -295,12 +290,12 @@ else:
             movc("ok")
             sl(0.5)
             movc("ok")
-            if fi != ses*ses_num - 1:
+            if fi != ses_num - 1:
                 act_after()
         if err >= lim:
             break
         movc("close")
-        sl(0.5)
+        sl(1)
         buy()
     if err >= lim:
         #movc("refresh")
