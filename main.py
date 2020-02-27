@@ -222,7 +222,8 @@ for _ in range(1):
     pos_s[enms[2]] = (1020, 620)
     print(pos_s)
 
-fig_num = 5
+fig_num = 1
+ses_num = 5
 
 lose = cv.imread('img7.png')
 win = cv.imread('img8.png')
@@ -230,18 +231,18 @@ erimg = cv.imread('img15.png')
 
 lim = 50000
 
-movc("intr")
-sl(0.5)
-movc("shop")
-sl(0.5)
-movc("supplies")
-sl(0.25)
-movc("shop_left")
-sl(0.5)
-movc("shop_left")
-sl(0.25)
-movc("passes", 0)
-#movc("close")
+def buy():
+    movc("shop")
+    sl(0.5)
+    movc("supplies")
+    sl(0.5)
+    movc("shop_left")
+    sl(0.5)
+    movc("shop_left")
+    sl(0.5)
+    movc("passes")
+    sl(0.5)
+    movc("close")
 
 sl(1000)
 
@@ -254,42 +255,44 @@ if bool(fir) is True:
     movc("intr")
 else:
     movc("intr")
-    act()
-    for fi in range(fig_num):
-        gl_num = 0
-        err = 0
-        while 1:
-            last = False
-            if err >= lim//2:
-                sl(0.5)
-                print("chance")
-            if error(erimg) is True:
-                last = not False
-                err += 1
-            if last is False:
-                err = 0
-            print(err, end=" ")
+    for ses in range(fig_num):
+        act()
+        for fi in range(ses_num):
+            gl_num = 0
+            err = 0
+            while 1:
+                last = False
+                if err >= lim//2:
+                    sl(0.5)
+                    print("chance")
+                if error(erimg) is True:
+                    last = not False
+                    err += 1
+                if last is False:
+                    err = 0
+                print(err, end=" ")
+                if err >= lim:
+                    print("error")
+                    break
+                if (reward(win) or reward(lose)) is True:
+                    print("\nend",end=" ")
+                    if reward(win) is True:
+                        print("win")
+                    elif reward(lose) is True:
+                        print("lose")
+                    movc("close")
+                    break
+                atac()
+                sl(2)
             if err >= lim:
-                print("error")
                 break
-            if (reward(win) or reward(lose)) is True:
-                print("\nend",end=" ")
-                if reward(win) is True:
-                    print("win")
-                elif reward(lose) is True:
-                    print("lose")
-                movc("close")
-                break
-            atac()
-            sl(2)
-        if err >= lim:
-            break
-        sl(0.5)
-        movc("ok")
-        sl(0.5)
-        movc("ok")
-        if fi != fig_num - 1:
-            act_after()
+            sl(0.5)
+            movc("ok")
+            sl(0.5)
+            movc("ok")
+            if fi != ses*ses_num - 1:
+                act_after()
+
     if err >= lim:
         #movc("refresh")
         sl(0.2)
