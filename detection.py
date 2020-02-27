@@ -20,7 +20,7 @@ def reward(img):
     return find(capt2([620, 225, 290, 130]), img)[1]
 
 def error(img):
-    return find(capt2([620, 625, 290, 130]), img)[1]
+    return find(capt2([20, 625, 1290, 50]), img)[1]
 
 def reward_h(img):
     return find(capt2([620, 225, 290, 130]), img)
@@ -30,17 +30,17 @@ if __name__ == "__main__":
     whole_siz = [0, 225, 1500, 775]
     siz = [350, 865, 275, 132]
     rev = [620, 225, 290, 130]
-    err = [620, 625, 290, 130]
+    err = [20, 625, 1290, 50]
     link_siz = err
 
     check = False
-    template = cv.imread('img8.png')
+    template = cv.imread('img15.png')
     w, h = template.shape[1::-1]
 
     while 1:
         img = capt2(link_siz)# capture(link_siz) #capt2
         
-        loc, check = reward_h(template)#find(img, template)
+        loc, check = reward_h(template) # find(img, template)
 
         if check is True:
             for pt in zip(*loc[::-1]):
