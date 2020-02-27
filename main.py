@@ -163,6 +163,23 @@ def atac():
 #    on_release=on_release)
 #listenerk.start()
 
+'''(875, 628)
+(876, 634)
+(876, 634)
+(876, 634)
+(948, 699)
+(948, 699)
+(948, 699)
+(801, 697)
+(801, 697)
+(801, 697)
+(874, 772)
+(874, 772)
+(874, 772)
+(876, 697)
+(876, 697)
+(876, 697)'''
+
 m_lis = 0
 fir = 0
 
@@ -204,6 +221,10 @@ for _ in range(1):
         "open_sort":(410, 290),
         "ok":(610, 727),
         "refresh":(85, 50),
+        "shop":(830, 755),
+        "supplies":(815, 290),
+        "shop_left":(1025, 545),
+        "passes":(875, 700),
         }
     for i in range(len(figs)): pos_s[figs[i]] = (360+255*i, 725)
     for i in range(len(divs)): pos_s[divs[i]] = (265+110.5*i, 730)
@@ -218,13 +239,29 @@ for _ in range(1):
     pos_s[enms[2]] = (1020, 620)
     print(pos_s)
 
-fig_num = 1
+fig_num = 5
 
 lose = cv.imread('img7.png')
 win = cv.imread('img8.png')
 erimg = cv.imread('img15.png')
 
-lim = 5
+lim = 50000
+
+movc("intr")
+sl(0.5)
+movc("shop")
+sl(0.5)
+movc("supplies")
+sl(0.25)
+movc("shop_left")
+sl(0.5)
+movc("shop_left")
+sl(0.25)
+movc("passes", 0)
+#movc("close")
+
+sl(1000)
+
 sl(1)
 if bool(fir) is True:
     movc("intr")
@@ -248,12 +285,16 @@ else:
                 err += 1
             if last is False:
                 err = 0
-            print(err)
+            print(err, end=" ")
             if err >= lim:
                 print("error")
                 break
             if (reward(win) or reward(lose)) is True:
-                print("end")
+                print("\nend",end=" ")
+                if reward(win) is True:
+                    print("win")
+                elif reward(lose) is True:
+                    print("lose")
                 movc("close")
                 break
             atac()
